@@ -1,0 +1,4 @@
+<!-- blog_detail.html -->
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<a href="{% url 'blog:update' pk=post.pk %}">Edit</a>
