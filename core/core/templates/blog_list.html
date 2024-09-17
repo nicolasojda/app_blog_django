@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Contenedor principal con un fondo de color -->
+<div class="bg-gray-100 p-6 rounded-lg">
+  <h1 class="text-center text-3xl font-bold mb-4">Blog List</h1>
 
-blog list
-<br>
-{%for post in posts%}
-<a href="{% url 'blog:detail' post.id %}" class="flex items-center text-5xl font-extrabold dark:text-white">{{post.title}}</a>
-<a href="{% url 'blog:update' post.id %}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Update</a>
-<a href="{% url 'blog:delete' post.id %}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">Delete</a>
-{%endfor%}
-<br>
-<a href = {% url 'blog:create' %} class= "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded ">create</a>
+  <!-- Itera sobre los posts -->
+  {% for post in posts %}
+  <div class="mb-4 p-4 bg-white rounded-lg shadow-md">
+    <a href="{% url 'blog:detail' post.id %}" class="flex items-center text-3xl font-extrabold text-gray-800 dark:text-white hover:text-blue-600">
+      {{ post.title }}
+    </a>
+    <div class="mt-2 flex space-x-2">
+      <a href="{% url 'blog:update' post.id %}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+        Update
+      </a>
+      <a href="{% url 'blog:delete' post.id %}" class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+        Delete
+      </a>
+    </div>
+  
+  {% endfor %}
 
+  <!-- Botón de crear blog -->
+  <div class="text-center max-w-md mx-auto">
+  <a href="{% url 'blog:create' %}" class=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded  ">
+           Create
+ 
+  </a>
+</div>
+</div>
 {% endblock content %}
